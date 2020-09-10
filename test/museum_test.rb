@@ -91,8 +91,10 @@ class MuseumTest < Minitest::Test
     }
 
     assert_equal expected, @dmns.patrons_by_exhibit_interest
+    #I don't understand wht this isn't passing - the output is identical.  moving on.
 
   end
+  
 
 
 
