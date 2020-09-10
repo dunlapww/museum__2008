@@ -137,7 +137,10 @@ class MuseumTest < Minitest::Test
     @dmns.admit(patron_2)
     @dmns.admit(patron_3)
 
-    assert_equal patron_1, @dmns.draw_lottery_winner(@dead_sea_scrolls)
+    actual = @dmns.draw_lottery_winner(@dead_sea_scrolls) == patron_1 || @dmns.draw_lottery_winner(@dead_sea_scrolls) == patron_3
+
+    assert actual
+    # don't know how to test for patron 1 or 2.
   end
 
 
