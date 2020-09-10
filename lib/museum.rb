@@ -43,8 +43,6 @@ class Museum
         exhibits_by_interest[exhibit] = []
       end
     end
-
-    
     exhibits_by_interest
   end
 end

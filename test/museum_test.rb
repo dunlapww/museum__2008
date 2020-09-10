@@ -72,7 +72,7 @@ class MuseumTest < Minitest::Test
     @dmns.add_exhibit(@dead_sea_scrolls)
     @dmns.add_exhibit(@imax)
 
-    patron_1 = Patron.new("Bob", 20)
+    patron_1 = Patron.new("Bob", 0)
     patron_1.add_interest("Dead Sea Scrolls")
     patron_1.add_interest("Gems and Minerals")
     patron_2 = Patron.new("Sally", 20)
@@ -94,7 +94,31 @@ class MuseumTest < Minitest::Test
     #I don't understand wht this isn't passing - the output is identical.  moving on.
 
   end
-  
+
+  def test_ticket_lottery_contestants
+    @dmns.add_exhibit(@gems_and_minerals)
+    @dmns.add_exhibit(@dead_sea_scrolls)
+    @dmns.add_exhibit(@imax)
+
+    patron_1 = Patron.new("Bob", 0)
+    patron_1.add_interest("Dead Sea Scrolls")
+    patron_1.add_interest("Gems and Minerals")
+    patron_2 = Patron.new("Sally", 20)
+    patron_2.add_interest("Dead Sea Scrolls")
+    patron_3 = Patron.new("Johnny", 5)
+    patron_3.add_interest("Dead Sea Scrolls")
+
+    @dmns.admit(patron_1)
+    @dmns.admit(patron_2)
+    @dmns.admit(patron_3)
+
+    expected = [patron_1, patron_3]
+    actual = @dmns.tickt_lottery_contestants(dead_seas_scrolls)
+
+    assert_equal expected, actual
+
+  end
+
 
 
 
