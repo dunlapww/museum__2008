@@ -45,4 +45,16 @@ class Museum
     end
     exhibits_by_interest
   end
+
+  def ticket_lottery_contestants(exhibit)
+    contestants = []
+    @patrons.each do |patron|
+      if patron.exhibit_interests.include(exhibit) && patron.spending_money < exhibit.cost
+        contestants << patron
+      end
+    end
+    contestants
+  end
+
+
 end

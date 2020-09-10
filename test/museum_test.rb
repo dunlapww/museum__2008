@@ -113,7 +113,7 @@ class MuseumTest < Minitest::Test
     @dmns.admit(patron_3)
 
     expected = [patron_1, patron_3]
-    actual = @dmns.tickt_lottery_contestants(dead_seas_scrolls)
+    actual = @dmns.ticket_lottery_contestants(dead_seas_scrolls)
 
     assert_equal expected, actual
 
